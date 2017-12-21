@@ -7,8 +7,8 @@ RUN	apt-get update -y && apt-get dist-upgrade -y && \
 	ca-certificates
 
 WORKDIR	/tmp
-RUN	git clone --recursive https://github.com/avast-tl/retdec.git && \
-	cd retdec && \
+RUN	git clone --recursive https://github.com/avast-tl/retdec.git
+RUN	cd retdec && \
 	mkdir build && cd build && \
-	cmake .. -DCMAKE_INSTALL_PREFIX=/usr && \
+	cmake .. -DCMAKE_INSTALL_PREFIX=/usr -DFLEX_INCLUDE_DIR=/usr/bin && \
 	make && make install
